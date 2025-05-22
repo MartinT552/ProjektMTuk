@@ -239,28 +239,5 @@
             <p>&copy; 2025 MovieRate by Martin Tuk. Vse pravice pridržane.</p>
         </div>
     </footer>
-
-    <script>
-        // JavaScript za ocenjevanje z zvezdicami
-        document.querySelectorAll('.rating-stars .star').forEach(star => {
-            star.addEventListener('click', function() {
-                const stars = this.parentElement.querySelectorAll('.star');
-                const rating = this.getAttribute('data-value');
-                
-                // Posvetimo zvezdice
-                stars.forEach((s, index) => {
-                    if (index < rating) {
-                        s.classList.add('active');
-                    } else {
-                        s.classList.remove('active');
-                    }
-                });
-                
-                // Tukaj bi v praksi poslali oceno na strežnik
-                console.log(`Ocenili ste film z ${rating} zvezdicami`);
-                alert(`Hvala za oceno! Dali ste ${rating} zvezdic.`);
-            });
-        });
-    </script>
 </body>
 </html>
