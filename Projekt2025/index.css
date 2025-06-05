@@ -1,25 +1,25 @@
 .filmi {
-			padding: 20px;
-			margin: -10px; 
-			font-size: 0; 
-		}
+	columns: 10; 
+	column-gap: 20px;
+	padding: 20px;
+}
 
 .film {
-	display: inline-block;
-	vertical-align: top;
-	width: 200px;
-	margin: 10px; 
+	width: 100%;
+	margin-bottom: 20px;
 	border: 1px solid #ccc;
 	border-radius: 10px;
 	overflow: hidden;
-	box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 	text-decoration: none;
 	color: black;
-	font-size: 12px; 
+	font-size: 14px;
+	transition: box-shadow 0.3s;
+	break-inside: avoid;
 }
 
 .film:hover {
-	box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .film img {
@@ -28,16 +28,16 @@
 	object-fit: cover;
 }
 
-.film .podatki {
+.podatki {
 	padding: 10px;
 }
 
-.film .podatki h3 {
-	margin: 0 0 10px 0;
+.podatki h3 {
+	margin: 0 0 10px;
 	font-size: 18px;
 }
 
-.film .podatki p {
+.podatki p {
 	margin: 0;
 	font-size: 14px;
 }

@@ -2,31 +2,27 @@
 session_start();
 require_once 'baza.php';
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $e_posta = $_POST['e_posta'];
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $email = $_POST['e_posta'];
     $geslo = sha1($_POST['pas']);
 
-    $sql = "SELECT * FROM uporabniki WHERE e_posta = ? AND geslo = ?";
-    $stmt = mysqli_prepare($link, $sql);
-    mysqli_stmt_bind_param($stmt, "ss", $e_posta, $geslo);
-    mysqli_stmt_execute($stmt);
-    $result = mysqli_stmt_get_result($stmt);
+    $sql = "SELECT * FROM uporabniki WHERE e_posta = '$email' AND geslo = '$geslo'";
+    $result = mysqli_query($link, $sql);
 
-    if (mysqli_num_rows($result) === 1) {
-        $row = mysqli_fetch_assoc($result);
-
+    if ($row = mysqli_fetch_assoc($result)) {
+        $_SESSION['id_u'] = $row['id_u'];
         $_SESSION['name'] = $row['ime'];
         $_SESSION['surname'] = $row['priimek'];
-        $_SESSION['id_u'] = $row['id_u']; 
-		$_SESSION['je_admin'] = $row['je_admin']; 
+        $_SESSION['je_admin'] = $row['je_admin'];
 
-        header("Location: index.php"); 
+        header("Location: index.php");
         exit();
     } else {
-        echo "<p>Neuspešna prijava. Napačen e-naslov ali geslo.</p>";
+        echo "<p>Napačen e-naslov ali geslo.</p>";
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html>

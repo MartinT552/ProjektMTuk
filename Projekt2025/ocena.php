@@ -76,11 +76,9 @@ while ($row = mysqli_fetch_assoc($result_ocene)) {
 <?php
 if (!empty($ocene)) {
     foreach ($ocene as $o) {
-
         echo '<b>' . htmlspecialchars($o['ime']) . '</b><br>';
         echo 'Ocena: ' . (int)$o['ocena'] . '<br>';
         echo 'Komentar: ' . nl2br(htmlspecialchars($o['komentar'])) . '<br>' . '<hr>';
-
     }
 } else {
     echo '<p>Za ta film še ni bilo oddanih ocen.</p>';

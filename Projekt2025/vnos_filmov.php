@@ -18,19 +18,29 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $trajanje = (int)$_POST['trajanje'];
     $id_r = (int)$_POST['id_r'];
 
-    if (isset($_FILES['poster']) && $_FILES['poster']['error'] === UPLOAD_ERR_OK) {
-        $poster = file_get_contents($_FILES['poster']['tmp_name']);
-    } else {
-        $poster = null;
-    }
+	if (!empty($_FILES['poster']['tmp_name'])) {
+		$poster = addslashes(file_get_contents($_FILES['poster']['tmp_name']));
+	} else {
+		$poster = null;
+	}
 
-    $stmt = mysqli_prepare($link, "INSERT INTO filmi (naslov, datum_izdaje, id_d, trajanje_filma, id_r, poster) VALUES (?, ?, ?, ?, ?, ?)");
-    mysqli_stmt_bind_param($stmt, "ssiibs", $naslov, $datum_izdaje, $id_d, $trajanje, $id_r, $poster);
-    mysqli_stmt_send_long_data($stmt, 5, $poster);
+	$query = "
+		INSERT INTO filmi (naslov, datum_izdaje, id_d, trajanje_filma, id_r, poster)
+		VALUES ('$naslov', '$datum_izdaje', $id_d, $trajanje, $id_r, " . ($poster ? "'$poster'" : "NULL") . ")
+	";
+
+	if (mysqli_query($link, $query)) {
+		echo "<p>Film uspešno dodan!</p>";
+		header("refresh:2;url=vnos_filmov.php");
+		exit;
+	} else {
+		echo "<p>Napaka: " . mysqli_error($link) . "</p>";
+	}
+
 
     if (mysqli_stmt_execute($stmt)) {
         echo "<p>Film uspešno dodan!</p>";
-        header("refresh:2;url=dodaj_film.php");
+        header("refresh:2;url=vnos_filmov.php");
         exit();
     } else {
         echo "<p>Napaka: " . mysqli_stmt_error($stmt) . "</p>";

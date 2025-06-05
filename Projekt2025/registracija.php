@@ -4,35 +4,33 @@ require_once 'baza.php';
 
 $kraji = mysqli_query($link, "SELECT id_k, kraj FROM kraji ORDER BY kraj");
 
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $ime = $_POST['ime'];
     $priimek = $_POST['priimek'];
     $naslov = $_POST['naslov'];
     $e_posta = $_POST['e_posta'];
-    $geslo = sha1($_POST['geslo']);  
+    $geslo = $_POST['geslo']; 
     $id_k = $_POST['id_k'];
     $je_admin = 0;
 
 
-    $preveri = mysqli_query($link, "SELECT id_u FROM uporabniki WHERE e_posta = '$e_posta'");
-    if (mysqli_num_rows($preveri) > 0) {
+    $obstaja = mysqli_query($link, "SELECT * FROM uporabniki WHERE e_posta = '$e_posta'");
+    if (mysqli_num_rows($obstaja) > 0) {
         echo "<p>Ta e-pošta je že registrirana.</p>";
     } else {
-
         $sql = "INSERT INTO uporabniki (ime, priimek, naslov, e_posta, geslo, id_k, je_admin)
                 VALUES ('$ime', '$priimek', '$naslov', '$e_posta', '$geslo', '$id_k', '$je_admin')";
-
         if (mysqli_query($link, $sql)) {
-            echo "<p>Uspešna registracija!</p>";
+            echo "<p>Registracija uspešna!</p>";
             header("refresh:2;url=prijava.php");
             exit();
         } else {
-            echo "<p>Napaka pri registraciji: " . mysqli_error($link) . "</p>";
+            echo "<p>Napaka: " . mysqli_error($link) . "</p>";
         }
     }
 }
 ?>
+
 
 
 <!DOCTYPE html>
