@@ -58,7 +58,7 @@ if (isset($_SESSION['je_admin']) && $_SESSION['je_admin'] === '1') {
         <option value="0">Vsi žanri</option>
         <?php
 
-		while ($zanr = mysqli_fetch_assoc($zanri_result)) {
+		while ($zanr = mysqli_fetch_array($zanri_result)) {
 			echo '<option value="' . $zanr['id_z'] . '"';
     
 			if ($zanr['id_z'] == $izbran_zanr) {
@@ -75,7 +75,7 @@ if (isset($_SESSION['je_admin']) && $_SESSION['je_admin'] === '1') {
 <div class="filmi">
     
     <?php
-    while ($row = mysqli_fetch_assoc($result)) {
+    while ($row = mysqli_fetch_array($result)) {
         echo '<div>';
         echo '<a href="ocena.php?id=' . $row['id_f'] . '" class="film">';
         echo '<img src="poster.php?id=' . $row['id_f'] . '" alt="' . htmlspecialchars($row['naslov']) . '" style="width:100%; height:300px; object-fit:cover;">';
