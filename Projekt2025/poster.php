@@ -12,7 +12,7 @@ $sql = "SELECT poster FROM filmi WHERE id_f = $id";
 $result = mysqli_query($link, $sql);
 
 if ($result && mysqli_num_rows($result) > 0) {
-    $row = mysqli_fetch_assoc($result);
+    $row = mysqli_fetch_array($result);
     $poster = $row['poster'];
     
     header("Content-Type: image/jpeg");
