@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 $result = mysqli_query($link, "SELECT naslov FROM filmi WHERE id_f = $id_f");
-$row = mysqli_fetch_assoc($result);
+$row = mysqli_fetch_array($result);
 
 $film_naslov = "Neznan naslov";
 if ($row) {
