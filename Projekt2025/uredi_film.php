@@ -13,7 +13,7 @@ if (!isset($_GET['id'])) {
 $id_f = intval($_GET['id']);
 $sql = "SELECT * FROM filmi WHERE id_f = $id_f";
 $result = mysqli_query($link, $sql);
-$film = mysqli_fetch_assoc($result);
+$film = mysqli_fetch_array($result);
 
 if (!$film) {
     die("Film ni bil najden.");
@@ -58,7 +58,7 @@ $reziserji = mysqli_query($link, "SELECT id_r, ime, priimek FROM reziserji ORDER
         <select name="id_d" required class="kraji">
             <option value="">-- Izberi državo --</option>
             <?php
-            while ($drzava = mysqli_fetch_assoc($drzave)) {
+            while ($drzava = mysqli_fetch_array($drzave)) {
                 $selected = ($film['id_d'] == $drzava['id_d']) ? 'selected' : '';
                 echo '<option value="' . $drzava['id_d'] . '" ' . $selected . '>' . htmlspecialchars($drzava['ime']) . '</option>';
             }
@@ -71,7 +71,7 @@ $reziserji = mysqli_query($link, "SELECT id_r, ime, priimek FROM reziserji ORDER
         <select name="id_r" required class="kraji">
             <option value="">-- Izberi režiserja --</option>
             <?php
-            while ($reziser = mysqli_fetch_assoc($reziserji)) {
+            while ($reziser = mysqli_fetch_array($reziserji)) {
                 $selected = ($film['id_r'] == $reziser['id_r']) ? 'selected' : '';
                 echo '<option value="' . $reziser['id_r'] . '" ' . $selected . '>' . htmlspecialchars($reziser['ime'] . ' ' . $reziser['priimek']) . '</option>';
             }
