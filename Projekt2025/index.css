@@ -1,0 +1,316 @@
+
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 20px;
+    padding-bottom: 80px; 
+}
+
+/*glava*/
+
+.glava1 {
+    background-color: #A9A9A9;
+    padding: 15px 30px;
+    color: white;
+    overflow: hidden; 
+}
+
+.logo {
+    float: left; 
+}
+
+.logo a {
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+    color: #111;
+}
+
+.uporabnik {
+    float: right;
+    color: #111;
+}
+
+.uporabnik a {
+    text-decoration: none;
+    color: #111;
+}
+
+.uporabnik a:hover {
+    text-decoration: underline;
+}
+
+.admin {
+    float: right;
+    text-decoration: none;
+    color: #111;
+}
+
+.admin:hover {
+    text-decoration: underline;
+}
+
+/*noga*/
+
+.footer1 {
+    background-color: #A9A9A9;
+    padding: 15px 30px;
+    color: #ccc;
+    width: 100%;
+    position: fixed;  
+    bottom: 0; 
+    left: 0; 
+    right: 0;
+    box-sizing: border-box;
+    height: 60px;
+}
+
+.pravice {
+    float: left;
+    color: #111;
+    font-weight: bold;
+}
+
+/*prijava*/
+
+.prijava {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 400px;
+    margin: 50px auto;
+    text-align: center;
+    width: 90%;
+}
+
+.prijava_text {
+    color: #A9A9A9;
+    margin-bottom: 25px;
+    font-size: 30px;
+    text-align: center;
+}
+
+.email, .geslo {
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #111;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: #f9f9f9;
+}
+
+.email:focus, .geslo:focus {
+    background-color: #fff;
+}
+
+.prijava_gumb {
+    background-color: #A9A9A9;
+    color: white;
+    padding: 12px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.prijava_gumb:hover {
+    background-color: #111;
+}
+
+.registracija_link {
+    color: #A9A9A9;
+    text-decoration: none;
+    font-size: 14px;
+    margin-top: 15px;
+    position: relative;
+    padding-bottom: 2px;
+}
+
+.registracija_link:hover {
+    color: #111;
+    text-decoration: underline;
+}
+
+/*registracija*/
+
+.registracija_form {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 400px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+.registracija_text {
+    color: #A9A9A9;
+    margin-bottom: 25px;
+    font-size: 30px;
+    text-align: center;
+}
+
+.ime, .priimek, .naslov, select {
+    width: 90%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+    background-color: #f9f9f9;
+}
+
+.ime:focus, .priimek:focus, .naslov:focus, select:focus {
+    background-color: #fff;
+}
+
+select {
+    background-position: right 10px center;
+    background-size: 15px;
+    padding-right: 30px;
+    color: #a9a9a9;
+}
+
+.izbira_krajev {
+    color: #a9a9a9;
+}
+
+.kraji {
+    color: #a9a9a9;
+}
+
+.registracija_gumb {
+    background-color: #a9a9a9;
+    color: white;
+    padding: 12px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.registracija_gumb:hover {
+    background-color: #111;
+}
+
+label {
+    float: left;
+    margin-bottom: 10px;
+    color: #a9a9a9;
+    font-size: 15px;
+}
+
+/*prikaz filmov*/
+
+.filmi {
+    padding: 10px;
+    overflow: hidden; 
+    width: 100%;
+}
+
+.film {
+    float: left;
+    width: 15%;
+    margin: 10px 5px 10px 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    overflow: hidden;
+    text-decoration: none;
+    color: black;
+    background: white;
+}
+
+.film:hover {
+    transform: translateY(-5px);
+}
+
+.film img {
+    width: 100%;
+    height: 300px;
+    object-fit: contain;
+    background: #f0f0f0;
+    border-bottom: 1px solid #eee;
+}
+
+.podatki {
+    padding: 15px 10px;
+}
+
+.podatki h3 {
+    margin: 0 0 10px;
+    font-size: 18px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.podatki p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #555;
+}
+
+/*urejanje filmov*/
+
+.form_filmi {
+    margin: 40px auto;
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    font-family: sans-serif;
+}
+
+.pošlji_gumb {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.pošlji_gumb:hover {
+    background-color: #218838;
+}
+
+.vnosno_polje {
+    width: 95%;
+    padding: 10px;
+    margin-top: 5px;
+    background-color: #2c2c2c;
+    border: 1px solid #444;
+    border-radius: 6px;
+    color: white;
+    font-size: 14px;
+}
+
+/*ocene*/
+
+.ocena {
+    overflow: hidden; 
+    padding: 20px;
+    margin-bottom: 20px; 
+}
+
+.oceni_film {
+    float: left;
+    width: 48%;
+    border-right: 1px solid #eee;
+    padding-right: 20px;
+}
+
+.ocene {
+    float: right;
+    width: 48%;
+    padding-left: 20px;
+}
