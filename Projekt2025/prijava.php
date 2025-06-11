@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $sql = "SELECT * FROM uporabniki WHERE e_posta = '$email' AND geslo = '$geslo'";
     $result = mysqli_query($link, $sql);
 
-    if ($row = mysqli_fetch_assoc($result)) {
+    if ($row = mysqli_fetch_array($result)) {
         $_SESSION['id_u'] = $row['id_u'];
         $_SESSION['name'] = $row['ime'];
         $_SESSION['surname'] = $row['priimek'];
