@@ -68,7 +68,7 @@ $reziserji = mysqli_query($link, "SELECT id_r, ime, priimek FROM reziserji ORDER
     </div>
     <div>
         <input type="submit" value="Shrani spremembe" class="registracija_gumb">
-        <a href="izbrisi_film.php?id=<?php echo $id_f; ?>" class="admin">Izbriši film</a>
+        <a href="izbrisi_film.php?id=<?php echo $id_f; ?>" class="admin" onclick="return confirm('Ali res želite izbrisati ta film?')">Izbriši film</a>
     </div>
 </form>
 <?php include_once 'noga.php'; ?>
