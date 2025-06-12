@@ -42,14 +42,14 @@ if ($row) {
 $ocene = array();
 $sql_ocene = "SELECT o.ocena, o.komentar, u.ime FROM ocene o JOIN uporabniki u ON o.id_u = u.id_u WHERE o.id_f = $id_f ORDER BY o.id_o DESC";
 $result_ocene = mysqli_query($link, $sql_ocene);
-while ($row = mysqli_fetch_assoc($result_ocene)) {
+while ($row = mysqli_fetch_array($result_ocene)) {
     $ocene[] = $row;
 }
 $povprecna_ocena = "0";
 $sql_povprecje = "SELECT AVG(ocena) AS povprecje FROM ocene WHERE id_f = $id_f";
 $result_povprecje = mysqli_query($link, $sql_povprecje);
 if ($result_povprecje) {
-    $row_povprecje = mysqli_fetch_assoc($result_povprecje);
+    $row_povprecje = mysqli_fetch_array($result_povprecje);
     if ($row_povprecje && $row_povprecje['povprecje'] != null) {
         $povprecna_ocena = number_format($row_povprecje['povprecje'], 2);
     }
