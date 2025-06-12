@@ -1,24 +1,19 @@
 <?php
 include_once 'seja.php';
 require_once 'baza.php';
-
 if (!isset($_SESSION['je_admin']) || $_SESSION['je_admin'] !== '1') {
     die("Dostop zavrnjen.");
 }
-
 if (!isset($_GET['id'])) {
     die("ID filma ni podan.");
 }
-
 $id_f = intval($_GET['id']);
 $sql = "SELECT * FROM filmi WHERE id_f = $id_f";
 $result = mysqli_query($link, $sql);
 $film = mysqli_fetch_array($result);
-
 if (!$film) {
     die("Film ni bil najden.");
 }
-
 $drzave = mysqli_query($link, "SELECT id_d, ime FROM drzave ORDER BY ime");
 $reziserji = mysqli_query($link, "SELECT id_r, ime, priimek FROM reziserji ORDER BY priimek, ime");
 ?>
@@ -32,27 +27,21 @@ $reziserji = mysqli_query($link, "SELECT id_r, ime, priimek FROM reziserji ORDER
 </head>
 <body>
 <?php include_once 'glava.php'; ?>
-
 <h1 class="prijava_text">Uredi film: <?php echo htmlspecialchars($film['naslov']); ?></h1>
-
 <form method="POST" action="shrani_urejanje.php" class="form_filmi">
     <input type="hidden" name="id_f" value="<?php echo $film['id_f']; ?>">
-
     <div>
         <label>Naslov:</label>
         <input type="text" name="naslov" value="<?php echo htmlspecialchars($film['naslov']); ?>" required class="naslov">
     </div>
-
     <div>
         <label>Datum izdaje:</label>
         <input type="date" name="datum_izdaje" value="<?php echo $film['datum_izdaje']; ?>" required class="email">
     </div>
-
     <div>
         <label>Trajanje (min):</label>
         <input type="number" name="trajanje_filma" value="<?php echo $film['trajanje_filma']; ?>" required class="email">
     </div>
-
     <div>
         <label>Država:</label>
         <select name="id_d" required class="kraji">
@@ -65,7 +54,6 @@ $reziserji = mysqli_query($link, "SELECT id_r, ime, priimek FROM reziserji ORDER
             ?>
         </select>
     </div>
-
     <div>
         <label>Režiser:</label>
         <select name="id_r" required class="kraji">
@@ -78,12 +66,11 @@ $reziserji = mysqli_query($link, "SELECT id_r, ime, priimek FROM reziserji ORDER
             ?>
         </select>
     </div>
-
     <div>
         <input type="submit" value="Shrani spremembe" class="registracija_gumb">
+        <a href="izbrisi_film.php?id=<?php echo $id_f; ?>" class="admin">Izbriši film</a>
     </div>
 </form>
-
 <?php include_once 'noga.php'; ?>
 </body>
 </html>
