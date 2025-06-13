@@ -76,7 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <select name="id_d" required>
         <option value="">-- Izberi državo --</option>
         <?php
-        while ($drzava = mysqli_fetch_assoc($drzave_result)) {
+        while ($drzava = mysqli_fetch_array($drzave_result)) {
             echo '<option value="' . $drzava['id_d'] . '">' . htmlspecialchars($drzava['ime']) . '</option>';
         }
         ?>
@@ -89,7 +89,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <select name="id_r" required>
         <option value="">-- Izberi režiserja --</option>
         <?php
-        while ($reziser = mysqli_fetch_assoc($reziserji_result)) {
+        while ($reziser = mysqli_fetch_arrayy($reziserji_result)) {
             echo '<option value="' . $reziser['id_r'] . '">';
             echo htmlspecialchars($reziser['ime'] . ' ' . $reziser['priimek']);
             echo '</option>';
@@ -100,7 +100,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <label>Žanri:</label><br>
     <select name="zanri[]" multiple size="5">
         <?php
-        while ($zanr = mysqli_fetch_assoc($zanri_result)) {
+        while ($zanr = mysqli_fetch_array($zanri_result)) {
             echo '<option value="' . $zanr['id_z'] . '">' . htmlspecialchars($zanr['ime']) . '</option>';
         }
         ?>
@@ -128,7 +128,7 @@ $filmi_query = "
 
 $filmi_result = mysqli_query($link, $filmi_query);
 
-while ($row = mysqli_fetch_assoc($filmi_result)) {
+while ($row = mysqli_fetch_array($filmi_result)) {
     echo '<div>';
     echo '<a href="uredi_film.php?id=' . $row['id_f'] . '" class="film">';
     echo '<img src="poster.php?id=' . $row['id_f'] . '" alt="' . htmlspecialchars($row['naslov']) . '" style="width:100%; height:300px; object-fit:cover;">';
